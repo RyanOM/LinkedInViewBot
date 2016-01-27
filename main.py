@@ -1,9 +1,31 @@
-import os, argparse, time
-import urlparse, random
+import os, time, re
+import urlparse, random, getpass
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from bs4 import BeautifulSoup
+
+
+def getEmail():
+    email_verrified = False
+    while not email_verrified:
+        email = raw_input('Linkedin Email:')
+        if re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            email_verrified = True
+            return email
+        else:
+            print "Email not valid. Please try again"
+
+            
+def getPassword():
+    pw_verrified = False
+    while not pw_verrified:
+        password = getpass.getpass('Password:')
+        if len(password) >= 6:
+            pw_verrified = True
+            return password
+        else:
+            print "Password must have 6 or more characters"
 
 
 def getPeopleLinks(page):
@@ -75,22 +97,22 @@ def ViewBot(browser):
         print ""
 
 def Main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("email", help="LinkedIn email")
-    parser.add_argument("password", help="LinkedIn password")
-    args = parser.parse_args()
-
+    email = getEmail()
+    password = getPassword()
+    
+    print 'Logging in with %s' % email
     browser = webdriver.Firefox()
     browser.get("https://www.linkedin.com/uas/login")
 
     emailElement = browser.find_element_by_id("session_key-login")
-    emailElement.send_keys(args.email)
+    emailElement.send_keys(email)
     passwordElement = browser.find_element_by_id("session_password-login")
-    passwordElement.send_keys(args.password)
+    passwordElement.send_keys(password)
     passwordElement.submit()
 
     os.system('clear')
-    print("[+] Success! You are now logged in. The bot is starting!")
+    print("[+] Success! You are now logged in with %s." % email)
+    print("[+] The bot is starting!")
     ViewBot(browser)
     browser.close()
 

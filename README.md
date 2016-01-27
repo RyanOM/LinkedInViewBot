@@ -9,3 +9,4 @@ Once that has been done, get the bot running with the following code:
 
 `python main.py [linkedin email] [linkedin password]`
 
+To stop the bot, simply close the Firefox window or `CTRL+C´ in your terminal. 

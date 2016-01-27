@@ -23,4 +23,4 @@ To get started, make sure you have [pip](https://pip.pypa.io/en/stable/installin
     python main.py [linkedin email] [linkedin password]
 
 
-To stop the bot, simply close the Firefox window or `CTRL+C´ in your terminal. 
+To stop the bot, simply close the Firefox window or CTRL+C in your terminal. 

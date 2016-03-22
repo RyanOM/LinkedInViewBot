@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 def getEmail():
     email_verrified = False
     while not email_verrified:
-        email = raw_input('Linkedin Email:')
+        email = raw_input('Linkedin Email: ')
         if re.match(r"[^@]+@[^@]+\.[^@]+", email):
             email_verrified = True
             return email

@@ -20,7 +20,10 @@ To get started, make sure you have [pip](https://pip.pypa.io/en/stable/installin
     pip install -r requirements.txt
 
     # Finally done? Get the bot running with
-    python main.py [linkedin email] [linkedin password]
+    python main.py
+    
+    # You will then be asked to input your email followed by your password
+    
 
 
 To stop the bot, simply close the Firefox window or CTRL+C in your terminal. 
